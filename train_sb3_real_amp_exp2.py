@@ -22,13 +22,13 @@ TRAIN_FREQ = N_ENVS * N_STEPS   # train the discriminator once per rollout
 
 TASK_WEIGHT = 0.5               # both rewards are in [0, 1] now, so
 AMP_WEIGHT = 0.5                # 0.5 / 0.5 mixing as in the AMP paper
-REFERENCE_STATE_INIT_PROB = 0.5
+REFERENCE_STATE_INIT_PROB = 0.3
 
-DISCRIMINATOR_LR = 1e-4
+DISCRIMINATOR_LR = 3e-5
 DISCRIMINATOR_HIDDEN_DIM = 512
-DISC_UPDATES_PER_ROLLOUT = 8
+DISC_UPDATES_PER_ROLLOUT = 4
 DISC_BATCH_SIZE = 512
-GRADIENT_PENALTY_WEIGHT = 5.0
+GRADIENT_PENALTY_WEIGHT = 10.0
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models_exp2"
@@ -134,7 +134,7 @@ def main():
         "MlpPolicy",
         env,
         device=device,
-        learning_rate=1e-4,      # 5e-5 was very slow for 20M steps
+        learning_rate=5e-5,      # 5e-5 was very slow for 20M steps
         n_steps=N_STEPS,
         batch_size=512,
         n_epochs=5,
