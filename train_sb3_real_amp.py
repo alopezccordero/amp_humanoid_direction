@@ -40,6 +40,9 @@ CHECKPOINT_EVERY = 500_000
 
 def make_env(motion_lib, amp_mean, amp_std):
     def _init():
+        # Runs inside each SubprocVecEnv worker: keep torch single-threaded so
+        # 8 workers don't oversubscribe the 8-CPU slurm allocation.
+        torch.set_num_threads(1)
         # Each worker holds its OWN cpu copy of the discriminator for reward
         # evaluation; the callback pushes fresh weights after every update.
         disc_local = AMPDiscriminator(
