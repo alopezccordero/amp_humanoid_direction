@@ -11,7 +11,7 @@
 source ~/miniconda3/bin/activate
 conda activate mujoco-env
 
-cd ~/Python-class/mujoco/humanoid_direction
+cd ~/amp_humanoid_direction
 
 echo "Running on $(hostname)"
 echo "current directory: #(pwd)"
