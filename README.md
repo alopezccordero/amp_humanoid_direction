@@ -15,7 +15,6 @@ Eval (10 episodes, deterministic): **971.74 ± 13.51** episode reward.
 - `motion_lib.py` — loads mocap `.pkl` clips, filters bad contacts, samples expert transitions interpolated at the exact env control dt
 - `train_sb3_real_amp.py` — training (exp 1); `train_sb3_real_amp_exp2.py` — more conservative discriminator (exp 2)
 - `humanoid_direction_evaluate.py` — roll out a trained policy, print per-episode and mean ± std reward
-- `retargeted_pkl/` — ~60 mocap clips (stand/walk/run/turns/backwards) retargeted to Humanoid-v5
 - `models/`, `models_exp2/` — trained PPO policies, `VecNormalize` stats, discriminators
 
 ### Training data
